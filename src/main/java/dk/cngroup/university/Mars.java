@@ -34,4 +34,8 @@ public class Mars {
             return position;
         }
     }
+
+    public boolean checkIfStoneAhead() {
+        return !landscape.isFieldAccessible(RoverPositionFactory.getForwardPosition(position, rover.getDirection()));
+    }
 }

@@ -9,13 +9,19 @@ import static dk.cngroup.university.Field.INACCESSIBLE
 
 class MarsTest extends Specification {
 
+    def static Field[][] testLandscapeInaccessible = [
+            [ACCESSIBLE, INACCESSIBLE, ACCESSIBLE],
+            [ACCESSIBLE, ACCESSIBLE, INACCESSIBLE],
+            [ACCESSIBLE, INACCESSIBLE, ACCESSIBLE]
+    ]
+
     @Unroll
     "should move forward by one to #direction"(Direction direction, int x, int y) {
         given:
         def rover = Mock(Rover)
         rover.getDirection() >> direction
 
-        def landscape = new Landscape(LandscapeTest.testLandscape)
+        def landscape = new Landscape(LandscapeTest.testLandscapeAccessible)
         def position = new RoverPosition(1, 1)
 
         def mars = new Mars(rover, landscape, position)
@@ -45,7 +51,7 @@ class MarsTest extends Specification {
         def rover = Mock(Rover)
         rover.getDirection() >> direction
 
-        def landscape = new Landscape(LandscapeTest.testLandscape)
+        def landscape = new Landscape(LandscapeTest.testLandscapeAccessible)
         def position = new RoverPosition(1, 1)
 
         def mars = new Mars(rover, landscape, position)
@@ -135,5 +141,24 @@ class MarsTest extends Specification {
         SOUTH     | 0 | 2
         EAST      | 0 | 2
         WEST      | 0 | 2
+    }
+
+    @Unroll
+    "should return #isStoneAhead for #direction, if there is a stone ahead"(boolean isStoneAhead, Direction direction) {
+        given:
+        def rover = new Rover(direction)
+        def position = new RoverPosition(1, 1)
+        Landscape landscape = new Landscape(testLandscapeInaccessible)
+        def mars = new Mars(rover, landscape, position)
+
+        expect:
+        isStoneAhead == mars.checkIfStoneAhead()
+
+        where:
+        isStoneAhead | direction
+        true         | NORTH
+        true         | EAST
+        true         | SOUTH
+        false        | WEST
     }
 }
