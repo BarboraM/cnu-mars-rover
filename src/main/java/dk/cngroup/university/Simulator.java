@@ -1,14 +1,44 @@
 package dk.cngroup.university;
 
 public class Simulator {
+
     private Rover rover;
     private RoverPosition startPosition, finalPosition;
     private Landscape landscape;
     private Mars mars;
     private String input;
+    private String commands;
+
+    public Mars getMars() {
+        return mars;
+    }
 
     public Simulator(String input) {
         this.input = input;
+    }
+
+    public void initializeData() {
+        String[] lines = input.split("\n");
+
+        startPosition = getPositionFromInput(lines[0]);
+
+        Direction direction = getDirectionFromInput(lines[2]);
+        rover = new Rover(direction);
+
+        int sizeOfLandscape = Integer.parseInt(lines[4]);
+        Field[][] field = new Field[sizeOfLandscape][sizeOfLandscape];
+
+        String landscapeString = "";
+        for (int i = 0; i < sizeOfLandscape; i++) {
+            landscapeString += lines[6 + i] + "\n";
+        }
+        landscape = getLandscapeFromInput(landscapeString, sizeOfLandscape, field);
+
+        mars = new Mars(rover, landscape, startPosition);
+
+        finalPosition = getPositionFromInput(lines[7 + sizeOfLandscape]);
+
+        commands = lines[9 + sizeOfLandscape];
     }
 
     public RoverPosition getPositionFromInput(String positionString) {
@@ -36,7 +66,6 @@ public class Simulator {
         }
         return new Landscape(field);
     }
-
 
 }
 

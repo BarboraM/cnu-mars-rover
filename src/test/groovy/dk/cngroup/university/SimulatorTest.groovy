@@ -7,17 +7,17 @@ class SimulatorTest extends Specification {
 
 
     @Unroll
-    "should initialize startPosition based on input"() {
+    "should initialize position based on input"() {
         given:
         def input = "1,0"
         def simulator = new Simulator(input)
 
         when:
-        def startPosition = simulator.getPositionFromInput(input)
+        def position = simulator.getPositionFromInput(input)
 
         then:
-        startPosition.getX() == 1
-        startPosition.getY() == 0
+        position.getX() == 1
+        position.getY() == 0
     }
 
     @Unroll
@@ -64,6 +64,37 @@ class SimulatorTest extends Specification {
 
         then:
         landscape.toString().equals(testLandscape.toString())
+    }
 
+    @Unroll
+    "should initialize data"() {
+        given:
+        def input = "1,0\n" +
+                "\n" +
+                "N\n" +
+                "\n" +
+                "3\n" +
+                "\n" +
+                ".0.\n" +
+                "..0\n" +
+                ".0.\n" +
+                "\n" +
+                "2,3\n" +
+                "\n" +
+                "RRFLFRFF"
+        def simulator = new Simulator(input)
+
+        when:
+        simulator.initializeData()
+        def mars = simulator.getMars()
+
+        then:
+        mars.getRover().getDirection() == Direction.NORTH
+        mars.getPosition().getX() == 1
+        mars.getPosition().getY() == 0
+        mars.getLandscape().toString().equals(""".0.
+..0
+.0.
+""")
     }
 }

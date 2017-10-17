@@ -15,6 +15,14 @@ public class Mars {
         return position;
     }
 
+    public Rover getRover() {
+        return rover;
+    }
+
+    public Landscape getLandscape() {
+        return landscape;
+    }
+
     public RoverPosition moveForward() {
         RoverPosition forwardPosition = RoverPositionFactory.getForwardPosition(position, rover.getDirection());
 
