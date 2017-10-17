@@ -10,6 +10,18 @@ public enum Field {
         this.printChar = printChar;
     }
 
+    public static Field getFieldFromChar(char fieldChar) {
+        switch (fieldChar) {
+            case '.':
+                return ACCESSIBLE;
+            case '0':
+                return INACCESSIBLE;
+        }
+        //should never happen
+        throw new RuntimeException("unkown worldside value");
+
+    }
+
     @Override
     public String toString() {
         return printChar;

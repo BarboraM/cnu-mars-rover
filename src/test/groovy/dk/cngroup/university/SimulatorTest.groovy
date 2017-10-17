@@ -48,4 +48,22 @@ class SimulatorTest extends Specification {
         then:
         field.length == 3
     }
+
+    @Unroll
+    "should initialize landscape with size based on input"() {
+        given:
+        def input = ".0.\n" +
+                "..0\n" +
+                ".0."
+        def size = 3
+        def field = new Field[size][size]
+        def simulator = new Simulator(input)
+        def testLandscape = new Landscape(MarsTest.testLandscapeInaccessible)
+        when:
+        def landscape = simulator.getLandscapeFromInput(input, size, field)
+
+        then:
+        landscape.toString().equals(testLandscape.toString())
+
+    }
 }

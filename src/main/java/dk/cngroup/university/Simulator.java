@@ -25,5 +25,18 @@ public class Simulator {
         Field[][] field = new Field[landscapeSize][landscapeSize];
         return field;
     }
+
+    public Landscape getLandscapeFromInput(String landscapeString, int sizeOfLandscape, Field[][] field) {
+        String[] lines = landscapeString.split("\n");
+        for (int i = 0; i < sizeOfLandscape; i++) {
+            String fieldLine = lines[i];
+            for (int j = 0; j < sizeOfLandscape; j++) {
+                field[i][j] = Field.getFieldFromChar(fieldLine.charAt(j));
+            }
+        }
+        return new Landscape(field);
+    }
+
+
 }
 
