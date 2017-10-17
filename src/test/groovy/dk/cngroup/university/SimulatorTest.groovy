@@ -7,17 +7,33 @@ class SimulatorTest extends Specification {
 
 
     @Unroll
-    "should initialize #startPosition based on input"() {
-
+    "should initialize startPosition based on input"() {
         given:
         def input = "1,0"
         def simulator = new Simulator(input)
 
         when:
-        simulator.initializeData()
+        def startPosition = simulator.getPositionFromInput(input)
 
         then:
-        simulator.startPosition.getX() == 1
-        simulator.startPosition.getY() == 0
+        startPosition.getX() == 1
+        startPosition.getY() == 0
     }
+
+    @Unroll
+    "should initialize #direction based on #input"(String input, Direction direction) {
+        given:
+        def simulator = new Simulator(input)
+
+        expect:
+        direction == simulator.getDirectionFromInput(input)
+
+        where:
+        input | direction
+        "N"   | Direction.NORTH
+        "E"   | Direction.EAST
+        "S"   | Direction.SOUTH
+        "W"   | Direction.WEST
+    }
+
 }

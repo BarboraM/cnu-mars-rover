@@ -21,4 +21,19 @@ public enum Direction {
     public Direction getLeftOf() {
         return DirectionFactory.getDirection(leftOf);
     }
+
+    public static Direction getDirectionFromString(String direction) {
+        switch (direction) {
+            case "N":
+                return NORTH;
+            case "E":
+                return EAST;
+            case "S":
+                return SOUTH;
+            case "W":
+                return WEST;
+        }
+        //should never happen
+        throw new RuntimeException("unkown worldside value");
+    }
 }

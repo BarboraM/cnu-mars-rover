@@ -11,9 +11,13 @@ public class Simulator {
         this.input = input;
     }
 
-    public void initializeData() {
-        String[] position = input.split(",");
-        this.startPosition = new RoverPosition(Integer.parseInt(position[0]), Integer.parseInt(position[1]));
+    public RoverPosition getPositionFromInput(String positionString) {
+        String[] position = positionString.split(",");
+        return new RoverPosition(Integer.parseInt(position[0]), Integer.parseInt(position[1]));
+    }
+
+    public Direction getDirectionFromInput(String directionString) {
+        return Direction.getDirectionFromString(directionString);
     }
 }
 
