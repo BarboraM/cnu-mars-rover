@@ -36,4 +36,16 @@ class SimulatorTest extends Specification {
         "W"   | Direction.WEST
     }
 
+    @Unroll
+    "should initialize field based on input size"() {
+        given:
+        def input = "3"
+        def simulator = new Simulator(input)
+
+        when:
+        def field = simulator.getFieldFromInput(input)
+
+        then:
+        field.length == 3
+    }
 }

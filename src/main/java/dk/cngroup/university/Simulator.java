@@ -19,5 +19,11 @@ public class Simulator {
     public Direction getDirectionFromInput(String directionString) {
         return Direction.getDirectionFromString(directionString);
     }
+
+    public Field[][] getFieldFromInput(String size) {
+        int landscapeSize = Integer.parseInt(size);
+        Field[][] field = new Field[landscapeSize][landscapeSize];
+        return field;
+    }
 }
 
