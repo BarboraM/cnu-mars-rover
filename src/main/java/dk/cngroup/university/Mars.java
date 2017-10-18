@@ -19,6 +19,11 @@ public class Mars {
         return rover;
     }
 
+    public void setRover(Rover rover) {
+        this.rover = rover;
+    }
+
+
     public Landscape getLandscape() {
         return landscape;
     }
@@ -27,7 +32,9 @@ public class Mars {
         RoverPosition forwardPosition = RoverPositionFactory.getForwardPosition(position, rover.getDirection());
 
         if (landscape.isFieldAccessible(forwardPosition)) {
+            this.position = forwardPosition;
             return forwardPosition;
+
         } else {
             return position;
         }
@@ -37,6 +44,7 @@ public class Mars {
         RoverPosition backwardPosition = RoverPositionFactory.getBackwardPosition(position, rover.getDirection());
 
         if (landscape.isFieldAccessible(backwardPosition)) {
+            this.position = backwardPosition;
             return backwardPosition;
         } else {
             return position;

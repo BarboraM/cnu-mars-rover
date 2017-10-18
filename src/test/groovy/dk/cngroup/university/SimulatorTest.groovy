@@ -36,4 +36,25 @@ class SimulatorTest extends Specification {
 .0.
 """)
     }
+
+    @Unroll
+    "should run simulation and return true"() {
+        given:
+
+        def landscape = new Landscape(LandscapeTest.testLandscapeAccessible)
+        def position = new RoverPosition(1, 1)
+        def finalPosition = new RoverPosition(0, 0)
+        def rover = new Rover()
+        def mars = new Mars(rover, landscape, position)
+
+        def simulator = new Simulator(rover, position, finalPosition, landscape, mars, "FRBRFLLF")
+
+        when:
+        def result = simulator.runSimulation()
+
+        then:
+        result == true;
+
+    }
+
 }
