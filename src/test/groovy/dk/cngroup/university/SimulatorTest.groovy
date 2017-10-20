@@ -38,7 +38,7 @@ class SimulatorTest extends Specification {
     }
 
     @Unroll
-    "should run simulation and return true"() {
+    "should execute commands, the position should be equal to final postion"() {
         given:
 
         def landscape = new Landscape(LandscapeTest.testLandscapeAccessible)
@@ -50,11 +50,10 @@ class SimulatorTest extends Specification {
         def simulator = new Simulator(rover, position, finalPosition, landscape, mars, "FRBRFLLF")
 
         when:
-        def result = simulator.runSimulation()
+        simulator.executeCommands()
 
         then:
-        result == true;
-
+        mars.getPosition().getX() == finalPosition.getX();
+        mars.getPosition().getY() == finalPosition.getY();
     }
-
 }

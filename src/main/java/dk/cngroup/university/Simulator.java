@@ -25,11 +25,16 @@ public class Simulator {
 
     public Simulator(String input) {
         this.input = input;
+        initializeData();
     }
-
 
     public Mars getMars() {
         return mars;
+    }
+
+    public boolean runSimulation() {
+        executeCommands();
+        return finalPosition.equals(mars.getPosition());
     }
 
     public void initializeData() {
@@ -55,7 +60,7 @@ public class Simulator {
         commands = lines[9 + sizeOfLandscape];
     }
 
-    public boolean runSimulation() {
+    public void executeCommands() {
         Rover newRover;
         for (int i = 0; i < commands.length(); i++) {
             char command = commands.charAt(i);
@@ -76,13 +81,6 @@ public class Simulator {
                     break;
             }
         }
-        boolean result = false;
-        if (finalPosition.getX() == mars.getPosition().getX()) {
-            if (finalPosition.getY() == mars.getPosition().getY()) {
-                result = true;
-            }
-        }
-        return result;
     }
 }
 

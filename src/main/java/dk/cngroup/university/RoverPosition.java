@@ -32,4 +32,10 @@ public class RoverPosition {
 
         return true;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        RoverPosition other = (RoverPosition) obj;
+        return (x == other.getX()) && (y == other.getY());
+    }
 }
