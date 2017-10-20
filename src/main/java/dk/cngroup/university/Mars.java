@@ -23,7 +23,6 @@ public class Mars {
         this.rover = rover;
     }
 
-
     public Landscape getLandscape() {
         return landscape;
     }

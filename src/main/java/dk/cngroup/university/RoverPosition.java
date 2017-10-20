@@ -38,4 +38,10 @@ public class RoverPosition {
         RoverPosition other = (RoverPosition) obj;
         return (x == other.getX()) && (y == other.getY());
     }
+
+    @Override
+    public String toString() {
+        return x + ", " + y;
+    }
 }
+
