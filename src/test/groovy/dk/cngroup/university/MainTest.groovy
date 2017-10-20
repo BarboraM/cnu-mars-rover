@@ -16,4 +16,13 @@ class MainTest extends Specification {
         noExceptionThrown()
     }
 
+    @Unroll
+    "should run simulation and return true based on input"() {
+        when:
+        Main.main()
+
+        then:
+        println true
+    }
+
 }
