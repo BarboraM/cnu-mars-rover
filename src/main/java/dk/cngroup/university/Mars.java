@@ -36,7 +36,7 @@ public class Mars {
     public RoverPosition moveForward() {
         RoverPosition forwardPosition = RoverPositionFactory.getForwardPosition(position, rover.getDirection());
 
-        if (landscape.isFieldAccessible(forwardPosition)) {
+        if (landscape.isFieldAccessible(forwardPosition) == 1) {
             this.position = forwardPosition;
             return forwardPosition;
 
@@ -48,7 +48,7 @@ public class Mars {
     public RoverPosition moveBackward() {
         RoverPosition backwardPosition = RoverPositionFactory.getBackwardPosition(position, rover.getDirection());
 
-        if (landscape.isFieldAccessible(backwardPosition)) {
+        if (landscape.isFieldAccessible(backwardPosition) == 1) {
             this.position = backwardPosition;
             return backwardPosition;
         } else {
@@ -57,7 +57,16 @@ public class Mars {
     }
 
     public boolean checkIfStoneAhead() {
-        return !landscape.isFieldAccessible(getForwardPosition());
+        switch (landscape.isFieldAccessible(getForwardPosition())) {
+            case 0:
+                return true;
+            case 1:
+                return false;
+            case -1:
+                return false;
+        }
+        //should never happen
+        throw new RuntimeException("unkown accessibility value");
     }
 
     public RoverPosition getForwardPosition() {

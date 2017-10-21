@@ -39,12 +39,17 @@ public class Landscape {
         return sb.toString();
     }
 
-    public boolean isFieldAccessible(RoverPosition pos) {
+    public int isFieldAccessible(RoverPosition pos) {
         if (!pos.isInsideLandscape(landscape.length)) {
-            return false;
+            return -1;
         }
 
         Field field = landscape[pos.getX()][pos.getY()];
-        return field == Field.ACCESSIBLE;
+        if (field == Field.ACCESSIBLE) {
+            return 1;
+        } else {
+            return 0;
+        }
+
     }
 }

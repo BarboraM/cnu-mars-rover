@@ -75,8 +75,8 @@ class SimulatorTest extends Specification {
 
         then:
         size == 2
-        first.equals("2,1")
-        second.equals("1,2")
+        first.toString().equals("2,1")
+        second.toString().equals("1,2")
 
     }
 }

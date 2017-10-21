@@ -19,7 +19,7 @@ public class Main {
                 "\n" +
                 "RRFLFRFF";
         Simulator simulator = new Simulator(input);
-        boolean successful = simulator.runSimulation();
-        System.out.println(successful);
+        boolean result = simulator.runSimulation();
+        System.out.println(result);
     }
 }

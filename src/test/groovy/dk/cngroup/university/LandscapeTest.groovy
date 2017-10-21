@@ -46,7 +46,7 @@ class LandscapeTest extends Specification {
     }
 
     @Unroll
-    "should return #isAccessible for #x:#y"(boolean isAccessible, int x, int y) {
+    "should return #isAccessible for #x:#y"(int isAccessible, int x, int y) {
         given:
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
         generator.getRandomField() >>> [INACCESSIBLE, INACCESSIBLE, ACCESSIBLE]
@@ -60,12 +60,12 @@ class LandscapeTest extends Specification {
 
         where:
         isAccessible | x  | y
-        false        | 0  | 0
-        false        | 0  | 1
-        true         | 0  | 2
-        true         | 1  | 0
-        false        | 3  | 3
-        false        | -1 | -2
+        0            | 0  | 0
+        0            | 0  | 1
+        1            | 0  | 2
+        1            | 1  | 0
+        -1           | 3  | 3
+        -1           | -1 | -2
     }
 
 }
