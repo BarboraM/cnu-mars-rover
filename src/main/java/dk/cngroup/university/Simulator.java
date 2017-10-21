@@ -32,8 +32,10 @@ public class Simulator {
         return mars;
     }
 
+
     public boolean runSimulation() {
         executeCommands();
+        mars.getCamera().printAllPhotos();
         return finalPosition.equals(mars.getPosition());
     }
 
@@ -66,16 +68,29 @@ public class Simulator {
             char command = commands.charAt(i);
             switch (command) {
                 case 'F':
+                    if (mars.checkIfStoneAhead()) {
+                        mars.getCamera().takePhoto(mars.getForwardPosition());
+                        break;
+                    }
                     mars.moveForward();
                     break;
                 case 'B':
+                    if (mars.checkIfStoneAhead()) {
+                        mars.getCamera().takePhoto(mars.getForwardPosition());
+                    }
                     mars.moveBackward();
                     break;
                 case 'L':
+                    if (mars.checkIfStoneAhead()) {
+                        mars.getCamera().takePhoto(mars.getForwardPosition());
+                    }
                     newRover = mars.getRover().turnLeft();
                     mars.setRover(newRover);
                     break;
                 case 'R':
+                    if (mars.checkIfStoneAhead()) {
+                        mars.getCamera().takePhoto(mars.getForwardPosition());
+                    }
                     newRover = mars.getRover().turnRight();
                     mars.setRover(newRover);
                     break;

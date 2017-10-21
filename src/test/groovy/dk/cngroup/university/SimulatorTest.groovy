@@ -38,7 +38,7 @@ class SimulatorTest extends Specification {
     }
 
     @Unroll
-    "should execute commands, the position should be equal to final postion"() {
+    "should execute commands, the position should be equal to final position"() {
         given:
 
         def landscape = new Landscape(LandscapeTest.testLandscapeAccessible)
@@ -55,5 +55,28 @@ class SimulatorTest extends Specification {
         then:
         mars.getPosition().getX() == finalPosition.getX();
         mars.getPosition().getY() == finalPosition.getY();
+    }
+
+    @Unroll
+    "should print photos of 2 stones"() {
+        def landscape = new Landscape(MarsTest.testLandscapeInaccessible)
+        def position = new RoverPosition(2, 0)
+        def finalPosition = new RoverPosition(1, 1)
+        def rover = new Rover(Direction.EAST)
+        def mars = new Mars(rover, landscape, position)
+
+        def simulator = new Simulator(rover, position, finalPosition, landscape, mars, "LFRFRF")
+
+        when:
+        simulator.executeCommands()
+        def size = mars.getCamera().photos.size()
+        def first = mars.getCamera().photos[0]
+        def second = mars.getCamera().photos[1]
+
+        then:
+        size == 2
+        first.equals("2,1")
+        second.equals("1,2")
+
     }
 }

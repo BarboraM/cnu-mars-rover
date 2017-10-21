@@ -4,11 +4,13 @@ public class Mars {
     private Rover rover;
     private Landscape landscape;
     private RoverPosition position;
+    private Camera camera;
 
     public Mars(Rover rover, Landscape landscape, RoverPosition position) {
         this.rover = rover;
         this.landscape = landscape;
         this.position = position;
+        camera = new Camera();
     }
 
     public RoverPosition getPosition() {
@@ -19,12 +21,16 @@ public class Mars {
         return rover;
     }
 
-    public void setRover(Rover rover) {
-        this.rover = rover;
-    }
-
     public Landscape getLandscape() {
         return landscape;
+    }
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public void setRover(Rover rover) {
+        this.rover = rover;
     }
 
     public RoverPosition moveForward() {
@@ -51,6 +57,10 @@ public class Mars {
     }
 
     public boolean checkIfStoneAhead() {
-        return !landscape.isFieldAccessible(RoverPositionFactory.getForwardPosition(position, rover.getDirection()));
+        return !landscape.isFieldAccessible(getForwardPosition());
+    }
+
+    public RoverPosition getForwardPosition() {
+        return RoverPositionFactory.getForwardPosition(position, rover.getDirection());
     }
 }
