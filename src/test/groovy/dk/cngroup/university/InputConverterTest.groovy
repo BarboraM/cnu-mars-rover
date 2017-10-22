@@ -52,6 +52,7 @@ class InputConverterTest extends Specification {
         def size = 3
         def field = new Field[size][size]
         def testLandscape = new Landscape(MarsTest.testLandscapeInaccessible)
+
         when:
         def landscape = InputConverter.getLandscapeFromInput(input, size, field)
 

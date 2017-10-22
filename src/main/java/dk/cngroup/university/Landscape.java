@@ -26,19 +26,6 @@ public class Landscape {
         return landscape;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Field[] row : landscape) {
-            for (Field field : row) {
-                sb.append(field);
-            }
-            sb.append("\n");
-        }
-
-        return sb.toString();
-    }
-
     public int isFieldAccessible(RoverPosition pos) {
         if (!pos.isInsideLandscape(landscape.length)) {
             return -1;
@@ -52,4 +39,19 @@ public class Landscape {
         }
 
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Field[] row : landscape) {
+            for (Field field : row) {
+                sb.append(field);
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
+
+
 }

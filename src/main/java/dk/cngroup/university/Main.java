@@ -20,6 +20,6 @@ public class Main {
                 "RRFLFRFF";
         Simulator simulator = new Simulator(input);
         boolean result = simulator.runSimulation();
-        System.out.println(result);
+        System.out.println("Rover reached the final position: " + result);
     }
 }

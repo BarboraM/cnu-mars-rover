@@ -11,6 +11,7 @@ class RoverTest extends Specification {
     "should return correct direction to WEST"() {
         when:
         def rover = new Rover(WEST)
+
         then:
         rover.getDirection() == WEST
     }
@@ -19,6 +20,7 @@ class RoverTest extends Specification {
     "should return correct direction to NORTH"() {
         when:
         def rover = new Rover(NORTH)
+
         then:
         rover.getDirection() == NORTH
     }
@@ -27,6 +29,7 @@ class RoverTest extends Specification {
     "should return default direction"() {
         when:
         def rover = new Rover()
+
         then:
         rover.getDirection() == NORTH
     }

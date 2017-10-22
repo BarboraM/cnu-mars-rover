@@ -3,6 +3,7 @@ package dk.cngroup.university;
 import java.util.ArrayList;
 
 public class Camera {
+
     ArrayList<Photo> photos;
 
     public Camera() {

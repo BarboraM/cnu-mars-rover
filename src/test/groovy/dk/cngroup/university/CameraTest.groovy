@@ -11,7 +11,6 @@ class CameraTest extends Specification {
         def camera = new Camera()
         def position = new RoverPosition(1, 0)
 
-
         when:
         camera.takePhoto(position)
 
@@ -26,8 +25,6 @@ class CameraTest extends Specification {
         def position1 = new RoverPosition(1, 0)
         def position2 = new RoverPosition(1, 1)
         def position3 = new RoverPosition(1, 0)
-
-
 
         when:
         camera.takePhoto(position1)

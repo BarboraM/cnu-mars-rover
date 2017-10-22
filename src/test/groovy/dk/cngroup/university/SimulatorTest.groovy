@@ -40,7 +40,6 @@ class SimulatorTest extends Specification {
     @Unroll
     "should execute commands, the position should be equal to final position"() {
         given:
-
         def landscape = new Landscape(LandscapeTest.testLandscapeAccessible)
         def position = new RoverPosition(1, 1)
         def finalPosition = new RoverPosition(0, 0)

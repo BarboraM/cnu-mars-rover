@@ -2,6 +2,9 @@ package dk.cngroup.university;
 
 public class Photo {
 
+    private int x;
+    private int y;
+
     public int getX() {
         return x;
     }
@@ -9,9 +12,6 @@ public class Photo {
     public int getY() {
         return y;
     }
-
-    private int x;
-    private int y;
 
     public Photo(int x, int y) {
         this.x = x;

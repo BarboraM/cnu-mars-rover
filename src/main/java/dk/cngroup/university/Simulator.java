@@ -1,13 +1,14 @@
 package dk.cngroup.university;
 
 public class Simulator {
+    private Rover rover;
+    private RoverPosition startPosition, finalPosition;
+    private Landscape landscape;
+    private Mars mars;
+    private String input;
+    private String commands;
 
-    public Simulator(Rover rover,
-                     RoverPosition startPosition,
-                     RoverPosition finalPosition,
-                     Landscape landscape,
-                     Mars mars,
-                     String commands) {
+    public Simulator(Rover rover, RoverPosition startPosition, RoverPosition finalPosition, Landscape landscape, Mars mars, String commands) {
         this.rover = rover;
         this.startPosition = startPosition;
         this.finalPosition = finalPosition;
@@ -15,13 +16,6 @@ public class Simulator {
         this.mars = mars;
         this.commands = commands;
     }
-
-    private Rover rover;
-    private RoverPosition startPosition, finalPosition;
-    private Landscape landscape;
-    private Mars mars;
-    private String input;
-    private String commands;
 
     public Simulator(String input) {
         this.input = input;
@@ -31,7 +25,6 @@ public class Simulator {
     public Mars getMars() {
         return mars;
     }
-
 
     public boolean runSimulation() {
         executeCommands();
